@@ -1,0 +1,48 @@
+<div>
+    <div class="clearfix margin20">
+        <h3 class="pull-left title1">信息列表</h3>
+        <div class="pull-right">
+            <button class="btn btn-primary btn-sm marginT15" ui-sref="home">录入信息</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover tobaccoList">
+            <thead>
+                <tr>
+                    <th>产品名称</th>
+                    <th>生产厂商</th>
+                    <th>生产日期</th>
+                    <th>产品描述</th>
+                    <th>二维码</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tobacco in vm.tobaccoList">
+                    <td>{{tobacco.name}}</td>
+                    <td>{{tobacco.manufacturer}}</td>
+                    <td>{{tobacco.date | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{tobacco.desc ? tobacco.desc : "——"}}</td>
+                    <td>
+                        <a ng-click="vm.lookCode(tobacco.qrcode)" data-toggle="modal" data-target="#newNode">查看</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="newNode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" data-translate="mmsTemp.tempDetails">扫码查看详情</h4>
+            </div>
+            <div class="modal-body">
+                <div id="qrcode" class="text-center">
+                    <img src="data:img/png;base64,{{vm.qrCodeImg}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

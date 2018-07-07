@@ -1,0 +1,65 @@
+<div ng-cloak>
+    <div class="clearfix margin20">
+        <h3 class="pull-left title1">录入信息</h3>
+        <div class="pull-right">
+            <button class="btn btn-primary btn-sm marginT15" ui-sref="list">信息列表</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" role="form" name="tobacco_form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        产品名称<span class="red">*</span>
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" ng-model="vm.tobacco.name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        生产厂商<span class="red">*</span>
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" ng-model="vm.tobacco.manufacturer" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        生产时间<span class="red">*</span>
+                    </label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   uib-datepicker-popup="{{vm.format}}" ng-model="vm.tobacco.date"
+                                   is-open="vm.popup1.opened"
+                                   ng-required="true"
+                                   close-text="关闭" clear-text="清空" current-text="今天"
+                                   datepicker-options="vm.dateOptions"
+                                   alt-input-formats="altInputFormats" readonly/>
+                            <span class="input-group-btn" ng-click="vm.open1()">
+                                <button type="button" class="btn btn-default">
+                                    <i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        产品描述<span class="red"> </span>
+                    </label>
+                    <div class="col-sm-8">
+                        <textarea ng-model="vm.tobacco.desc" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" ng-click="vm.reset()" class="btn btn-default btn-sm cancel-mtl marRight30" data-dismiss="modal">重置</button>
+                        <button type="submit" ng-click="vm.submit()" class="btn btn-primary btn-sm"
+                                ng-disabled="tobacco_form.$invalid || !vm.tobacco.name || !vm.tobacco.manufacturer || !vm.tobacco.date" data-dismiss="modal">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
